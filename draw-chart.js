@@ -148,7 +148,7 @@ function drawChart3(xValues, yValuesList) {
           type: "line",
           label: "Water_Required",
           data: yValuesList[3],
-          borderColor: "blue",
+          borderColor: "gray",
           fill: false,
           yAxisID: "right",
           borderDash: [5, 5],
