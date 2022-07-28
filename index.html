@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+
+    <script src="./file-parse.js"></script>
+    <script src="./draw-chart.js"></script>
+  </head>
+  <body>
+    <form enctype="multipart/form-data">
+      <input id="upload" type="file" name="files[]" />
+    </form>
+
+    <script>
+      document
+        .getElementById("upload")
+        .addEventListener("change", handleFileSelect, false);
+    </script>
+    <textarea
+      class="form-control"
+      rows="35"
+      cols="120"
+      id="xlx_json"
+    ></textarea>
+    <script>
+      $(function () {
+        fetch("public/CompiledDataGrantNE.xlsx")
+        .then(response => response.text())
+        .then(data => {
+          // Do something with your data
+          console.log(data);          
+          $("canvas").remove();
+          $("body").append(`
+          <canvas id="chart1" style="width: 100%;"></canvas>
+          <canvas id="chart2" style="width: 100%;"></canvas>
+          <canvas id="chart3" style="width: 100%;"></canvas>
+          <canvas id="chart4" style="width: 100%;"></canvas>`);
+          var files = evt.target.files; // FileList object
+          var xl2json = new ExcelToJSON();
+          xl2json.parseExcel(files[0]);
+        });
+      })
+    </script>
+  </body>
+</html>
