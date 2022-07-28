@@ -31,11 +31,11 @@
     ></textarea>
     <script>
       $(function () {
-        fetch("public/CompiledDataGrantNE.xlsx")
-        .then(response => {
+        fetch("./public/CompiledDataGrantNE.xlsx")
+        .then(response => response.text())
+        .then(data => {
           // Do something with your data
-          console.log("HEYYYYYYYYYY")
-          console.log(response.body);          
+          console.log(data);          
           $("canvas").remove();
           $("body").append(`
           <canvas id="chart1" style="width: 100%;"></canvas>
@@ -43,7 +43,7 @@
           <canvas id="chart3" style="width: 100%;"></canvas>
           <canvas id="chart4" style="width: 100%;"></canvas>`);
           var xl2json = new ExcelToJSON();
-          xl2json.parseExcel(response.body);
+          xl2json.parseExcel(data);
         });
       })
     </script>
