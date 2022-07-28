@@ -124,12 +124,12 @@ function drawChart3(xValues, yValuesList) {
           type: "bar",
           label: "Precip_mm",
           data: yValuesList[0],
-          borderColor: "red",
+          backgroundColor: "red",
           fill: false,
           yAxisID: "left",
         },
         {
-            type: "line",
+          type: "line",
           label: "Precip Cum",
           data: yValuesList[1],
           borderColor: "green",
@@ -137,7 +137,7 @@ function drawChart3(xValues, yValuesList) {
           yAxisID: "right",
         },
         {
-            type: "line",
+          type: "line",
           label: "Etc cum",
           data: yValuesList[2],
           borderColor: "blue",
@@ -145,7 +145,7 @@ function drawChart3(xValues, yValuesList) {
           yAxisID: "right",
         },
         {
-            type: "line",
+          type: "line",
           label: "Water_Required",
           data: yValuesList[3],
           borderColor: "blue",
